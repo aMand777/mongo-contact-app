@@ -1,0 +1,44 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col">
+      <h3 class="text-center fw-bold fs-3 mt-5">Data Contact</h3>
+      <!-- cek flash message -->
+      <% if (msg.length !== 0) { %>
+        <div class="alert alert-success" role="alert"><%= msg %></div>
+        <% } %>
+      <!-- tombol add contact -->
+    <a href="/contact/add" class="badge text-bg-success text-decoration-none fw-bold fst-italic fs-6 mb-3">Add <i class="bi bi-person-plus-fill"></i></a>
+      
+      <!-- Awal tabel -->
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nama</th>
+            <th scope="col">No HP</th>
+            <th scope="col">Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (contacts.length === 0) { %>
+          <tr>
+            <td colspan="4">
+              <div class="alert alert-danger fw-bold fs-5 text-center" role="alert">Data contact masih kosong
+            </td>
+          </tr>
+          <% } %> <% contacts.forEach((contact, i) => { i++ %>
+          <tr>
+            <th scope="row"><%= i++ %></th>
+            <td><%= contact.nama %></td>
+            <td><%= contact.nohp %></td>
+            <td>
+              <a href="/contact/<%= contact.nama %> " class="badge text-bg-info text-decoration-none"><i class="bi bi-info-circle-fill"></i> Detail</a>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <!-- Akhir tabel -->
+    </div>
+  </div>
+</div>
